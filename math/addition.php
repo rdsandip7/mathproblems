@@ -1,103 +1,129 @@
 <div class="wrapper style2">
     <section class="container">
-        <form name="form1" action="" method="post" >
-            
-                        <label>Enter the number of rows for matrix :</label>
-                    
-                        <input type="text" name="row" id="row" value="<?php echo isset($_POST['row']) ? $_POST['row'] : '' ;?>">
-                    
-                        <label>Enter the number of columns for matrix :</label>
-                    
-                        <input type="text" name="col" id="col" value="<?php echo isset($_POST['col']) ? $_POST['col'] : '' ;?>">
-                    
-                        <input type="button" name="create" value="Create Matrix" onclick="createMatrix()">
-                  
-            <div id="matrixA">
-            </div>
-            <div id="matrixB">
-            </div>
-            <input type="submit" name="submit" value="submit" class="submit">
-            <div class="create">
-            <script>
-
-                function createMatrix() {
-
-                    var row = document.getElementById('row').value;
-                    var col = document.getElementById('col').value;
-                    var i , j , m , n;
-                    if (row == '') {
-                        alert('Please Enter Number Of Rows!');
-                        return false;
-                    }
-                    if (col == '') {
-                        alert('Please Enter Number Of Columns !');
-                        return false;
-                    }
-                    
-                
-                        var amatrix = new Array();
-                        '<div class="col-md-12">'
-                        var htmlA = 'Enter the A matrix :';
-                        '</div>'
-                        htmlA += '<div class="col-md-12">';
-
-                        for (i = 0; i < row; i++) {
-                            amatrix[i] = new Array();
-                            
-                            htmlA += '<div class="col-md-12">';
-                            for (j = 0; j < col; j++) {
-                                htmlA += '<div class="col-md-6">';
-                                htmlA += '<input type="text" name="amatrix[' + i + '][' + j + ']">  ';
-                                htmlA += '</div>';
-                            }
-                           
-                            htmlA += '</div>';
-                        }
-                        htmlA += '</div>';
-                        document.getElementById('matrixA').innerHTML = htmlA;
-                    
-                        var bmatrix = new Array();
-                        var htmlB = 'Enter the B matrix :';
-                        htmlB += '<div class="col-md-12 ">';
-                        for (i = 0; i < row; i++) {
-                            bmatrix[i] = new Array();
-                            htmlB += '<div class="col-md-12">';
-                            for (j = 0; j < col; j++) {
-                                htmlB += '<div class="col-md-6">';
-                                htmlB += '<input type="text" name="bmatrix[' + i + '][' + j + ']">';
-                                htmlB += '</div>';
-                            }
-                            htmlB += '</div>';
-                        }
-                        htmlB += '</div>';
-                        document.getElementById('matrixB').innerHTML = htmlB;
-
-                }
-                </script>
+        <div class="col-md-12">
+            <form name="form1" action="" method="post" >
+                <div class="col-md-6">
+                    <label>Enter the number of rows for matrix :</label>
                 </div>
-                <script>
-                $('.submit').on('submit',function(e){
-                                e.preventDefault();
-                                $('.create').show();
-                            });
-               </script>
-                <script>
-                function checkMatrix() {
-                    var row = document.getElementById('row').value;
-                    var col = document.getElementById('col').value;
+                <div class="col-md-6">
+                    <input type="text" name="row" id="row" value="<?php echo isset($_POST['row']) ? $_POST['row'] : '' ;?>">
+                </div>
+                <div class="col-md-6">
+                    <label>Enter the number of columns for matrix :</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="col" id="col" value="<?php echo isset($_POST['col']) ? $_POST['col'] : '' ;?>">
+                </div>
+                <div class="col-md-6">
+                    <input type="button" name="create" value="Create Matrix" onclick="createMatrix()">
+                </div>
+                <div class="col-md-12">
+                    <div id="matrixA">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div id="matrixB">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div id="matrixC">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <input type="submit" name="submit" value="submit" class="submit" id="submit" onclick="addMatrix()">
+                </div>
+                <div class="col-md-12">
+                    <div class="create">
+                        <script>
+                            function createMatrix() {
+                                var row = document.getElementById('row').value;
+                                var col = document.getElementById('col').value;
+                                var i , j , m , n;
+                                if (row == '') {
+                                    alert('Please Enter Number Of Rows!');
+                                    return false;
+                                }
+                                if (col == '') {
+                                    alert('Please Enter Number Of Columns !');
+                                    return false;
+                                }
 
-                    if (row == '' || col == '') {
-                        alert('Please Create Matrix First!');
-                        return false;
-                    }
-                    else {
-                        return true;
-                    }
-                }
+                                var amatrix = new Array();
 
-            </script>
-        </form>
-        <?php
+                                var htmlA = 'Enter the A matrix :';
+                                htmlA += '<table>';
+
+                                for (i = 0; i < row; i++) {
+                                    amatrix[i] = new Array();
+
+                                    htmlA += '<tr>';
+                                    for (j = 0; j < col; j++) {
+                                        htmlA += '<td>';
+                                        htmlA += '<input type="text" name="amatrix[' + i + '][' + j + ']">';
+                                        htmlA += '</td>';
+                                    }
+                                    htmlA += '</tr>';
+                                }
+                                htmlA += '</table>';
+                                document.getElementById('matrixA').innerHTML = htmlA;
+
+                                var bmatrix = new Array();
+                                var htmlB = 'Enter the B matrix :';
+                                htmlB += '<table>';
+                                for (i = 0; i < row; i++) {
+                                    bmatrix[i] = new Array();
+                                    htmlB += '<tr>';
+                                    for (j = 0; j < col; j++) {
+                                        htmlB += '<td>';
+                                        htmlB += '<input type="text" name="bmatrix[' + i + '][' + j + ']">';
+                                        htmlB += '</td>';
+                                    }
+                                    htmlB += '</tr>';
+                                }
+                                htmlB += '</table>';
+                                document.getElementById('matrixB').innerHTML = htmlB;
+                            }
+
+                            function checkMatrix() {
+                                var row = document.getElementById('row').value;
+                                var col = document.getElementById('col').value;
+
+                                if (row == '' || col == '') {
+                                    alert('Please Create Matrix First!');
+                                    return false;
+                                }
+                                else {
+                                    return true;
+                                }
+                            }
+                            $("#submit").click(function addMatrix(){
+                            $("p").append("<b>Appended text</b>");
+                       
+                            function addMatrix(){
+                                 document.getElementById('matrixC').innerHTML = htmlC;
+                                var cmatrix = new Array();
+                                
+                                    var row = document.getElementById('row').value;
+                                    var col = document.getElementById('col').value;
+                                    var  m , n;
+                                    var htmlC = 'Addition of matrix :';
+                               
+                                    for (m = 0; m < row; m++) {
+                                        cmatrix[i] = new Array();
+                                        for (n = 0; n < col; n++) {
+                                            cmatrix[m][n] = amatrix[m][n] + bmatrix[m][n];
+                                            }
+                                            
+                                          }  
+                            }
+                             });
+                               
+                        </script>
+                    </div>
+                </div>
+            </form>
+        </div>
+       <!--  <?php
             if (@$_POST['submit'] === 'submit') {
             $amatrix = $_POST['amatrix'];
             $bmatrix = $_POST['bmatrix'];
@@ -124,6 +150,6 @@
             echo '</div>';
             echo '</div>';
             }
-        ?>
+        ?> -->
     </section>
 </div>

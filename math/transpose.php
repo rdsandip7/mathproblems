@@ -79,7 +79,7 @@
                         $transpose[$d][$c] = $amatrix[$c][$d];
                   }
             for ( $c = 0 ; $c < $col; $c++ ) {
-                echo '<div class="box col-md-6" >';
+                echo '<div class="box col-md-12" >';
                 for ( $d = 0 ; $d < $row ; $d++ ) {
                     echo '<h2>';
                     print_r($transpose[$c][$d]);
